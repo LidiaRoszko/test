@@ -8,13 +8,13 @@
         <meta name="author" content="Sam Toorchi, Lidia Roszko">
 
 
-        <!-- Roboto Web Font über Ajax HTTP Request *** Internetverbindung erforderlich *** -->
+        <!-- Roboto Web Font über Ajax HTTP Request *** Internetverbindung & Apache erforderlich *** -->
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
         <!-- CSS-Reset -->
         <link rel="stylesheet" type="text/css" href="res/stylesheet/reset.css">
 
-        <!-- Font Awesome über Ajax HTTP Request *** Internetverbindung erforderlich *** --> 
+        <!-- Font Awesome über Ajax HTTP Request *** Internetverbindung & Apache erforderlich *** --> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
         <!-- main.css kommt nach dem CSS-Reset, damit sie durch reset.css nicht überschrieben werden. -->
@@ -27,25 +27,25 @@
 
 
     <body>
-        <header id="menu_header">
-            <a id="logo" href="" title="Home"> Home </a>
+        <header id="menu_kopf">
+            <a id="logo" href="./main.html" title="home"> Home </a>
             <nav>
                 <ul>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A1 - Table </li> </a>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A2 - Parse </li> </a>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A2 - Save  </li> </a>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A2 - Print </li> </a>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A3 - REST </li> </a>
-                    <a class="header_link"> <li class="header_element"><i class="fa fa-list-ul"></i>  A4 - Vis  </li> </a>
+                    <a href="main.html" class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A1 - Table </li> </a>
+                    <a class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Parse </li> </a>
+                    <a class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Save  </li> </a>
+                    <a class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Print </li> </a>
+                    <a class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A3 - REST </li> </a>
+                    <a class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A4 - Vis  </li> </a>
                 </ul>
             </nav>
         </header>
 
         <article id="overview_article">
             <header>
-                <h1 class="main_caption"> World Data Overview </h1>
+                <h1 class="main_ueberschrift"> World Data Overview </h1>
             </header>
-            <section class="green_boxed_text_section">
+            <section class="textbox_gruen">
                 <!-- http://www.jongo-webagentur.de/blog/fun/lorem-ipsum-uebersetzung-auf-deutsch-4337029.html -->
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
                 et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -61,7 +61,7 @@
                 praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
                 consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                 Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                Duis autem vel eum iriure dolor in hendrerit in vulputate <a> velit esse </a>.
+                Duis autem vel eum iriure dolor in hendrerit in vulputate <a href="./main.html"> velit esse </a>.
             </section>
         </article>
 
@@ -94,8 +94,8 @@
                         <th>ID</th>
                         <th>
                             Country
-                            <Button class="sort_button" onclick="sort('data_table_1', 1, 0)"><i class="fa fa-angle-down"></i></Button>
-                            <Button class="sort_button" onclick="sort('data_table_1', 1, 1)"><i class="fa fa-angle-up"></i></Button>
+                            <Button class="sortieren" onclick="sort('data_table_1', 1, 0)"><i class="fa fa-angle-down"></i></Button>
+                            <Button class="sortieren" onclick="sort('data_table_1', 1, 1)"><i class="fa fa-angle-up"></i></Button>
                         </th>
                         <th>birth rate /1000</th>
                         <th>cellphones /100</th>
@@ -292,56 +292,56 @@
                         <td>93.33587369</td>
                         <td>2.5</td>
                         <td>4532.021902</td>
-                        <td>4424.758692</td>
+                        <td>10.08745979</td>
                     </tr>
                     <tr>
                         <td>022</td>
                         <td>Sweden</td>
-                        <td>16.405</td>
-                        <td>92.01936338</td>
-                        <td>1.862</td>
-                        <td>2201.808724</td>
-                        <td>4424.758692</td>
+                        <td>11.72</td>
+                        <td>112.1241184</td>
+                        <td>1937</td>
+                        <td>14143.01101</td>
+                        <td>91.12326108</td>
                     </tr>
                     <tr>
                         <td>023</td>
                         <td>United Arab Emirates</td>
-                        <td>16.405</td>
-                        <td>92.01936338</td>
-                        <td>1.862</td>
-                        <td>2201.808724</td>
-                        <td>4424.758692</td>
+                        <td>14027</td>
+                        <td>153.7997194</td>
+                        <td>1903</td>
+                        <td>9998.291079</td>
+                        <td>64</td>
                     </tr>
                     <tr>
                         <td>024</td>
                         <td>United Kingdom</td>
-                        <td>16.405</td>
-                        <td>92.01936338</td>
-                        <td>1.862</td>
-                        <td>2201.808724</td>
-                        <td>4424.758692</td>
+                        <td>12195</td>
+                        <td>130.1742603</td>
+                        <td>1.89</td>
+                        <td>5685.635995</td>
+                        <td>77.79971962</td>
                     </tr>
                     <tr>
                         <td>025</td>
                         <td>United States</td>
-                        <td>16.405</td>
-                        <td>92.01936338</td>
-                        <td>1.862</td>
-                        <td>2201.808724</td>
-                        <td>4424.758692</td>
+                        <td>14191</td>
+                        <td>89.14911634</td>
+                        <td>2002</td>
+                        <td>12913.71143</td>
+                        <td>71.21181627</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <footer id="group_footer">
-            <div class="footer_left_container">
-                Copyright &copy; 2015 world_data <br>
-                First course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering
+        <footer id="fussnoten">
+            <div class="fussnote_links">
+                <p>Copyright &copy; 2015 world_data <br>
+                First course exercise <b>HTML, CSS and JS</b> of the lecture Web and Multimedia Engineering</p>
             </div>
-            <div class="footer_right_container">
+            <div class="fussnote_rechts">
                 The solution has been created by:<br>
-                Andr&eacute; K&uuml;hnert (s6510611) and Nobody - Team 45
+                Sam Toorchi Roodsari (s3922626) and Lidia - Team 07
             </div>
         </footer>
     </body>
