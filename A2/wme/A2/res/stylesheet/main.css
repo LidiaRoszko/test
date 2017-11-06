@@ -1,0 +1,337 @@
+/*Standard Styles */
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 145%;
+    font-stretch: normal;
+}
+
+/* link in dem Textbox */
+a {
+    color: #057010;
+    text-decoration: underline;
+}
+
+/* link-hover, damit der unterstrichener Text weggeht */
+a.hover{
+    text-decoration: none;
+}
+
+/* Da <b> Tag in HTML-5 nicht mehr unterst√ºzt wird, m√ºsste sie nochmal definiert werden */
+b{
+    font-weight: bold;
+}
+
+/* Menü Kopf mit grauen Hintergrund */
+#menu_kopf {
+    margin: 0px;
+    height: 80px;
+    position: fixed;
+    top:0px;
+    width:100%;
+    border-bottom: thin solid #C1C7C3;
+	background: grey; /*fur Browser, die gradient nicht untestutzen*/
+    background: -webkit-linear-gradient(top, #CCCBCC , #FFFFFF); /* For Safari*/
+	background: -o-linear-gradient(bottom, #CCCBCC, #FFFFFF); /* For Opera*/
+    background: -moz-linear-gradient(bottom, #CCCBCC, #FFFFFF); /* For Firefox */
+    background: linear-gradient(to bottom, #CCCBCC , #FFFFFF); /* Standard syntax */
+}
+
+/* Logo Bild oben */
+#logo{
+    background-image:url(../img/world_data_logo_v1.png);
+    float: left;
+    display:block;
+    height:80px;
+    width:150px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-indent:100%;
+    background-repeat:no-repeat;
+    margin-right: 50px;
+    margin-left: 5px;
+}
+
+/* Logo Bild unten --grau-- */
+#logo:hover{
+    background-position:0px -80px;
+}
+
+/* Textboxen in dem Navibar horizontal */
+#nav_horizontal .header_icon{
+    float: left;
+    height: 80px;
+	min-width: 155px;
+	max-width: 170px;
+    text-align: left;
+    vertical-align: middle;
+    padding: 30px 30px 20px; /*top, left-right, bottom,*/
+    margin:0px;
+    border-left: thin solid #C1C7C3;
+    -moz-transition: background 0.7s;
+    -webkit-transition: background 0.7s;
+}
+
+/* Textboxen in dem Navibar vertikal */
+#nav_vertical .header_icon{
+	display: block;
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px 20px 10px; /*top, left-right, bottom,*/
+    margin:0px;
+    border-left: thin solid #C1C7C3;
+    -moz-transition: background 0.7s;
+    -webkit-transition: background 0.7s;
+}
+
+/* Navibar vertical, das sich ausblenden lässt*/
+#nav_vertical{
+	border-style: solid;
+	border-color: black;
+	visibility: collapse;
+	display: none;
+	padding-top: 110px;
+}
+
+/* Anstatt einzelnen Links oben ein Menu Icon */
+.menu{
+    float: right;
+    height: 80px;
+	visibility: collapse;
+	color: #222222;
+	font-size: 20px;
+	margin: 10px;
+}
+
+/* Textboxen in dem Navibar mit grauen Hintergrund für Hover */
+.header_icon:hover{
+    background: #C1C7C3;
+}
+
+/* Links im Nav */
+.header_href {
+	color: #222222;
+}
+
+/* Überschrift */
+h1.main_ueberschrift{
+    margin: 105px 9px 30px;
+    font-size: 35px;
+    font-weight: normal;
+	white-space: nowrap;
+}
+
+/* grauess Textbox oben mit Schatten */
+section.box{
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #F8F8F8;
+    border: thin solid #057010;
+    box-shadow: 3px 5px 2px lightgrey;
+    padding: 10px 8px 10px;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+}
+
+/* grüne links in dem Textbox */
+.box a{
+    color: #057010;
+    text-decoration: underline;
+}
+
+/* grüne links in dem Textbox nach dem Hovern */
+.box a:hover{
+    color: #057010;
+    text-decoration: none;
+}
+
+/* die Buttons zum verstecken/einbinden der Inhalte in der Tabelle */
+button.hide_column_button{
+    border: none;
+    background-color: #FFFFFF;
+    color: darkgrey;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-decoration: underline;
+}
+
+/* die Buttons zum verstecken/einbinden der Inhalte in der Tabelle nach dem Hovern */
+button.hide_column_button:hover{
+    text-decoration: none;
+}
+
+/* die Position der Tabelle */
+div.data_table_container{
+    margin: 20px 5px 20px;
+}
+
+/* Show/Hide Text neben den Buttons */
+div.show_hide_buttons{
+    /*float: left;*/
+    color: darkgray;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Größe der Tabelle*/
+table.data_table{
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Tabellenkopf */
+table.data_table thead{
+    text-align: left;
+    background: #FFFFFF;
+    border-bottom: medium solid #C1C7C3;
+}
+
+/* Style der Inhalt der Tabelle */
+table.data_table tbody:before{
+    line-height:1em; 
+    content:"\200C"; /* Leerzeichen über der ersten Element der Tabelle */ 
+    display:block;
+}
+
+/* Untertitel der Seite: allgemeines Design */
+#fussnoten{
+    width: 99%;
+    border-top: medium solid #057010;
+    padding: 10px 0px 0px;
+    margin: 0px 5px 5px;
+}
+
+/* Untertitel der Seite: linker Text */
+.fussnote_links{
+    float: left;
+    text-align: left;
+}
+
+/* Untertitel der Seite: rechter Text */
+.fussnote_rechts{
+    text-align: right;
+}
+
+/* Pfeile nach oben/unten Button */
+button.sortieren{
+    border: none;
+    background-color: #FFFFFF;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-decoration: underline;
+}
+
+/* Pfeile nach oben/unten Button mot Hover */
+button.sortieren:hover{
+    color: darkgrey;
+}
+
+/* Tabellenüberschriften: Countries .... */
+#data_table_col_7{
+    visibility: collapse;
+}
+
+#data_table_col_6{
+    visibility: collapse;
+}
+
+#data_table_col_5{
+    visibility: collapse;
+}
+
+/*
+Responsive Design
+*/
+@media screen and (max-width: 320px){
+
+	nav {
+		visibility: collapse;
+	}
+	
+    section.box{
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+    }
+	
+	.menu {
+		visibility: visible;
+	}
+
+}
+
+@media screen and (max-width: 768px){
+
+	#nav_horizontal {
+		visibility: collapse;
+	}
+	
+    section.box{
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+    }
+
+    #data_table_col_4{
+        visibility: visible;
+    }
+	
+	.menu {
+		visibility: visible;
+	}
+}
+
+@media screen and (min-width: 768px){
+
+	#nav_horizontal {
+		visibility: collapse;
+	}
+	
+    section.box{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+    }
+
+    #data_table_col_5{
+        visibility: visible;
+    }
+
+    #data_table_col_6{
+        visibility: visible;
+    }
+	
+	.menu {
+		visibility: visible;
+	}
+}
+
+@media screen and (min-width: 1200px){
+
+	#nav_horizontal {
+		visibility: visible;
+	}
+	
+	.menu {
+		visibility: collapse;
+	}
+	
+    section.box{
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+    }
+
+    #data_table_col_7{
+        visibility: visible;
+    }
+
+    #data_table_col_6{
+        visibility: visible;
+    }
+
+    #data_table_col_5{
+        visibility: visible;
+    }
+}
