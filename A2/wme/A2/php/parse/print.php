@@ -82,7 +82,7 @@
 <?php
         //Inserts Data Table
 
-        $parser = new WorldDataParser();
+        $parser = new Analyser();
         $parsed = $parser->parseCSV(WORLD_DATA_PATH);
         $save_result = $parser->saveXML($parsed);
         $print = $parser->printXML(XML_PATH, XSL_PATH);

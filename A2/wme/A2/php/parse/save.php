@@ -17,7 +17,7 @@
 
 
 <?php
-        $parser = new WorldDataParser();
+        $parser = new Analyser();
         $parsed = $parser->parseCSV(WORLD_DATA_PATH);
         $save_result = $parser->saveXML($parsed);
 
