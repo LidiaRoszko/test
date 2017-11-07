@@ -6,9 +6,9 @@
 <head>
          <meta charset="UTF-8">
          <meta name="description" content="WME Aufgabe 2">
-         <meta name="keywords" content="PHP, XML">
-         <meta name="author" content="">
-         <meta name="author" content="">
+         <meta name="keywords" content="PHP, XML, XSL">
+         <meta name="author" content="Sam Toorchi">
+         <meta name="author" content="Lidia Roszko">
 
          <!-- Font Awesome über Ajax HTTP Request *** Internetverbindung & Apache erforderlich *** --> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -28,12 +28,12 @@
 </head>
 <body>
          <header id="menu_kopf">
-            <a id="logo" href="./main.html" title="home"> Home </a> 
+            <a id="logo" href="../../main.html" title="home"> Home </a> 
 			<a class="menu" onclick="showMenu()"><i class="fa fa-list-ul"></i></a> 
 			<!-- horizontal navbar, versteckt sich, wenn screen zu klein ist -->
             <nav id="nav_horizontal">
                 <ul>
-                    <a href="main.html" class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A1 - Table </li> </a>
+                    <a href="../../main.html" class="header_href"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A1 - Table </li> </a>
                     <a class="header_href" href="/wme/A2/php/parse/parse.php"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Parse </li> </a>
                     <a class="header_href" href="/wme/A2/php/parse/save.php"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Save  </li> </a>
                     <a class="header_href" href="/wme/A2/php/parse/print.php"> <li class="header_icon"><i class="fa fa-list-ul"></i>  A2 - Print </li> </a>
@@ -80,27 +80,27 @@
               </div>
 
 <?php
-        //Inserts Data Table
+        //Daten in der Tabelle eintragen
 
         $parser = new Analyser();
         $parsed = $parser->parseCSV(WORLD_DATA_PATH);
         $save_result = $parser->saveXML($parsed);
-        $print = $parser->printXML(XML_PATH, XSL_PATH);
+        $ausgaben = $parser->printXML(XML_PATH, XSL_PATH );
 
-        echo $print;
+        echo $ausgaben;
 
 ?>
          </div>
 
-         <footer id="group_footer">
-                 <div class="footer_left_container">
-                         Copyright &copy; 2015 world_data <br>
-                         Second course exercise PHP and XML of the lecture Web and Multimedia Engineering
-                 </div>
-                 <div class="footer_right_container">
-                         The solution has been created by:<br>
-                         Andr&eacute; K&uuml;hnert (s6510611) and Fabian Boltz (s3349388) - Team 45
-                 </div>
-         </footer>
+         <footer id="fussnoten">
+            <div class="fussnote_links">
+                <p>Copyright &copy; 2015 world_data <br>
+                First course exercise <b>HTML, CSS and JS</b> of the lecture Web and Multimedia Engineering</p>
+            </div>
+            <div class="fussnote_rechts">
+                The solution has been created by:<br>
+                Sam Toorchi Roodsari (s3922626) and Lidia Roszko (s8302993)- Team 07
+            </div>
+        </footer>
 </body>
 </html>

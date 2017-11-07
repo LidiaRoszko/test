@@ -18,10 +18,10 @@ include("world_data_parser.php");
         <pre>
 <?php
 
-$parser = new Analyser();
-$parsedCSV = $parser->parseCSV(WORLD_DATA_PATH);
+$analyser = new Analyser();
+$fertiganalysiert = $analyser->parseCSV(WORLD_DATA_PATH);
 
-echo var_dump($parsedCSV);
+echo var_dump($fertiganalysiert);
 
 ?>
         </pre>

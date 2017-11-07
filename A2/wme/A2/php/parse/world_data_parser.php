@@ -16,19 +16,20 @@ class Analyser{
         $lesen = fgetcsv($offnen);
         $lesen_spaltenanzahl = count($lesen);
 
-        while (($zeile = fgetcsv($offnen)) !== FALSE) {
-            $zeile_spaltenanzahl = count($zeile);
-            $entry = array_combine($lesen, $zeile);
-            $ausgabe[] = $entry;
-            $zeilenanzahl++;
-            
-            if (($zeile = fgetcsv($offnen)) == FALSE){
-                echo "<p style=\"color: red\"> CSV Datei existiert nicht </p>";
-            }
+        if ($offnen == FALSE){
+            echo "<p style=\"color: red\"> CSV-Datei existiert nicht. Bitte überprüfen sie Ihre Ordnerstruktur --> res/data/wordl_data_v1.cst </p>";
         }
 
+        else {
 
+            while (($zeile = fgetcsv($offnen)) !== FALSE) {
+                $zeile_spaltenanzahl = count($zeile);
+                $entry = array_combine($lesen, $zeile);
+                $ausgabe[] = $entry;
+                $zeilenanzahl++;
 
+            }
+        }
 
         fclose($offnen);	
         return $ausgabe;
@@ -38,100 +39,114 @@ class Analyser{
 
 
     /*
-
-	@param data
-		data which should be transformed to xml as an array 
-
-	@returns gets a SimpleXMLElement
+    diese Funktion wandelt die gelesene Daten aus ein csv Datei in einem XML-Array um und schreibt sei alle in einer Zeile.
+    Als Rückgabe der Funktion wird der Wert aus dem Standardfunktion von PHP "SimpleXMLElement" ausgegeben.
+    Die Werte werden in Temporary gespeichert und erst später in der XML Datei geschrieben
 	*/
-    function createRawXML($data){
-        $root = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><Countries></Countries>');
+    function createRawXML($daten){
+        $baumwurzel = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><Countries></Countries>');
 
-        foreach($data as $zeile){
-            $tmp_country = $root->addChild("Country");
+        foreach($daten as $zeile){
+            $temporary_country = $baumwurzel->addChild("Country");
 
-            foreach($zeile as $key => $value){
-                $keyname = $this->getKeyName($key);
-                $tmp_value = $this->trimAll($value);
-                $tmp_country->addChild($keyname , $tmp_value);
+            foreach($zeile as $key => $wert){
+                $keynamen = $this->getKeyName($key);
+                $temporary_wert = $this->trimAll($wert);
+                $temporary_country->addChild($keynamen , $temporary_wert);
             }		
         }		
-        return $root;	
+        return $baumwurzel;	
     }
 
     /*
-	Formats the given xml data.
-
-	@param data 
-		the raw xml data as string
-
-	@returns formated xml data as string
+    Formatierung der XML Datei
+    Sie Kopfzeile wird jetzt schon in XML Datei gespeichert
+    Quelle: http://php.net/manual/de/domdocument.construct.php
+    @@@
 	*/
-    function formatXML($data){
-        $dom = new DOMDocument('1.0');
+    function formatXML($daten){
+        $dom = new DOMDocument('1.0', 'iso-8859-1');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
-        $dom->loadXML($data);
-        return $dom->saveXML();
+        $dom->loadXML($daten);
+        return $dom->saveXML();  /* <?xml version="1.0" encoding="iso-8859-1"?> */
     }
 
     /*
-	Gets a key name for the xml tag (e.g. removes whitespace).
-
-	@param name 
-		name to convert
-	@returns string value
+    alle Key Namen werden erfasst und in temporary gespeichert
+	Zusaätzlich für mehr übersicht werden leerzeichen zwischen den hinzugefügt während der Strin zerlegt wird
+    Quelle: http://php.net/manual/de/function.strtok.php
+	@@@
 	*/
-    function getKeyName($name){
-        $tmp = $this->trimAll($name);
+    function getKeyName($namen){
+        $temporary = $this->trimAll($namen);
 
-        //strtok should return a array but accessing the 
-        //first value with $split[0] will return the first letter?
-        $split = strtok($tmp, "   ");
-        return $split;
+        $leerzeichen = strtok($temporary, "   ");
+        return $leerzeichen;
     }
 
     /*
-	trimming whitespace from the value
+	Die Leerzeichen am Anfang und am Ende der String werden entfernt
+    Schließlich werden sie wieder in temporary gespeichert
+    Quelle:http://php.net/manual/de/function.ltrim.php
+    @@@
 	*/
-    function trimAll($value){
-        $tmp = ltrim($value, " ");
-        $tmp = rtrim($tmp, " ");
-        return $tmp;			
+    function trimAll($wert){
+        $temporary = ltrim($wert, " ");
+        $temporary = rtrim($temporary, " ");
+        return $temporary;			
     }
 
     /*
-	Saves a given Array as a XML File with the name 'world_data.xml'
-	Existing files will be overridden.
-
-	@param data
-		array data which should be written as xml
-
-	@returns status message as string
+	Speichern der Daten aus der Funktion createRawXML
+    @@@
 	*/
-    function saveXML($data){
-        $raw_xml = $this->createRawXML($data);
+    function saveXML($daten){
+        $raw_xml = $this->createRawXML($daten);
         $xml = $this->formatXML($raw_xml->asXML());		
-        return file_put_contents(XML_PATH, $xml) == FALSE ? FALSE : TRUE;
+        return file_put_contents(XML_PATH, $xml) ==  FALSE ? FALSE : TRUE;
     }
 
     /*
-	transformes xml data with the help of a given stylesheet
+    nicht formatierte Ausgabe (ohne XSL)
 	*/
-    function printXML($xml_path, $xsl_path){
+    
+    function printXMLUnstyled($xml_pfad){
         $xml_dom = new DOMDocument();
-        $xml_dom->load($xml_path);
+        $xml_dom->load($xml_pfad);
 
-
+        /*
         $xsl_dom = new DOMDocument();
-        $xsl_dom->load($xsl_path);
+        $xsl_dom->load($xsl_pfad);
 
         $proc = new XSLTProcessor();
         $proc->importStylesheet($xsl_dom);
 
         $doc = $proc->transformToDOC($xml_dom);
-        $doc->formatOutput = true;
+        */
+    
+        $xml_dom->formatOutput = true;
         return $doc->saveHTML();
     }
+
+    /*
+    formatierte Ausgabe (mit XSL)
+	*/
+    function printXML($xml_pfad, $xsl_pfad){
+		$xml_dom = new DOMDocument();
+		$xml_dom->load($xml_pfad);
+
+		
+		$xsl_dom = new DOMDocument();
+		$xsl_dom->load($xsl_pfad);
+		
+		$proc = new XSLTProcessor();
+		$proc->importStylesheet($xsl_dom);
+		
+		$doc = $proc->transformToDOC($xml_dom);
+		$doc->formatOutput = true;
+		return $doc->saveHTML();
+	}
+    
 }
 ?>
